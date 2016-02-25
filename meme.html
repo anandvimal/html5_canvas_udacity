@@ -51,25 +51,25 @@
       var ctx = canvas.getContext("2d");
       // Your code here
 
-      ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+      if (image != null)
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-      ctx.font = "bold 36pt impact";
-      ctx.textAlign = "center"
-      var top_text = topLine;
-      var bottom_text = bottomLine;
+      // Text attributes
+      ctx.font = 'bold 30pt Impact';
+      ctx.textAlign = 'center';
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 1;
+      ctx.fillStyle = 'white';
 
+      if (topLine != null) {
+        ctx.fillText(topLine, canvas.width / 2, 40);
+        ctx.strokeText(topLine, canvas.width / 2, 40);
+      }
 
-      ctx.fillStyle= "White";
-      ctx.strokeStyle = "Black";
-      ctx.lineWidth = 1.5;
-
-      // this is the top line.
-      ctx.fillText(top_text, canvas.width/2, 100)
-      ctx.strokeText( top_text , canvas.width/2, 100);
-
-      // this is the bottom line.
-      ctx.fillText(bottom_text, canvas.width/2, 400)
-      ctx.strokeText( bottom_text , canvas.width/2, 400);
+      if (bottomLine != null) {
+        ctx.fillText(bottomLine, canvas.width / 2, canvas.height - 20);
+        ctx.strokeText(bottomLine, canvas.width / 2, canvas.height - 20);
+      }
 
 
     }
