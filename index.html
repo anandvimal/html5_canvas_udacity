@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+</head>
+<body>
+  <canvas id="c" width="500" height="500"></canvas>
+
+  <script>
+
+    var c = document.querySelector("#c");
+    var ctx = c.getContext("2d");
+
+    var image = new Image();
+
+    image.onload = function(){
+      console.log("Loaded image");
+
+      // do something else
+      ctx.drawImage(image, 0, 0, c.width, c.height);
+
+      ctx.font = "bold 36pt impact";
+      ctx.textAlign = "center"
+
+      ctx.fillStyle= "White";
+      ctx.fillText("CANVAS MEMES!", c.width/2, 40)
+
+
+      ctx.strokeStyle = "Black";
+      ctx.lineWidth = 1.5;
+      ctx.strokeText("CANVAS MEMES!", c.width/2, 40);
+
+    }
+
+    image.src = "http://i.stack.imgur.com/9HgIv.png";
+  //ctx.strokeText("Hello Hello!", 50, 50);
+
+  </script>
+</body>
+</html>

@@ -1,8 +1,8 @@
 take a look at this :
 www.w3.org/TR/2dcontext/
 ********************************************************************************
+```
 <!DOCTYPE HTML>
-
 <html>
 <head>
 </head>
@@ -14,11 +14,24 @@ www.w3.org/TR/2dcontext/
   </script>
 </body>
 </html>
-we declare the canvas with this line:   <canvas id="c" width="200" height="200"></canvas>
+```
+
+
+we declare the canvas with this line:   
+
+```
+<canvas id="c" width="200" height="200"></canvas>
+```
 after this we need to do few more steps in javascript to get the context of canvas.
 
-we grab the selector with this line:     var c = document.querySelector("#c");
-and then we grab its context by this line: var ctx = c.getContext("2d");
+we grab the selector with this line:     
+```
+var c = document.querySelector("#c");
+```
+and then we grab its context by this line: var
+```
+ctx = c.getContext("2d");
+```
 we can also get a 3d canvas.
 
 from here we start drawing on canvas.
@@ -28,13 +41,15 @@ which is not exactly like normal math 2d co ordinates.
 
 and (0,0) is on top left corner.
 
-********************************************************************************
+---
 
 now to add a image in a webpage we usually use the image tags
+```
 <img src="http://notawebsite.com/image.jpg">
-
+```
 but in canvas we will do in script in javascript.
 
+```
 var image = new Image();
 
 image.onload = function(){
@@ -49,11 +64,17 @@ Notes: drawImage has three signatures for drawing in a canvas object.
 void ctx.drawImage(image, dx, dy);
 void ctx.drawImage(image, dx, dy, dWidth, dHeight);
 void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+```
 
-********************************************************************************
+useful links:
+
+ https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
+
+---
 
 to save the image we made here we do:
 
+```
 var savedImage = c.toDataURL();
 window.open(savedImage);
 image.onload = function(){
@@ -63,6 +84,8 @@ image.onload = function(){
   var savedImage = c.toDataURL();
   window.open(savedImage);
 }
+```
+
 * the saving thing did not worked so far. so leave this part for now.
 may be i will come back to this.
 
@@ -75,6 +98,7 @@ after it starts you can navigate to http://0.0.0.0:8000/index.html
 ********************************************************************************
 
 how we will draw on canvas:
+```
 <!DOCTYPE HTML>
 
 <html>
@@ -92,6 +116,7 @@ how we will draw on canvas:
   </script>
 </body>
 </html>
+```
 
 filled rectanges are filled with colors and stroke rectanges are not.
 
@@ -103,9 +128,10 @@ fillStyle : used to select color of filling canvas.
 
 so we will select white as fillStyle and then fullRect the whole canvas.
 
-clearRect : is easier and we dont have to slect any color.
+clearRect : is easier and we don't have to select any color.
 
 if we have a canvas c and given some code to draw a rect in a given color you might write something like:
+
 
 var c = document.querySelector("#c");
 var ctx = c.getContext("2d");
@@ -134,6 +160,7 @@ There are other ways also to draw on canvas:
 
 this begins with this command:
 
+```
 ctx.beginPath();
 ctx.moveTo(10,10);  // moves pen location to 10,10
 ctx.lineTo(50,50);  // draw from previous location to 50,50
@@ -141,6 +168,7 @@ ctx.lineTo(50,10);
 ctx.lineTo(10,50);
 //ctx.fill();
 //ctx.stroke();
+```
 
 there are more to learn about building path refer to :
 http://www.w3.org/TR/2dcontext/#building-paths
@@ -179,12 +207,14 @@ You should generally scale objects first, rotate them next, and then finally tra
 
 It’s important to note that whatever transformations apply for all subsequent objects until you reverse them.
 
-////////////////////////////////////////////////////////////////////////////////
+---
 
 Every canvas objects contains a stack of drawing states. Stacks are data structures that only let you push new items at one end. When you retrieve an item, it's the last item that was pushed or Last In-First Out(LIFO).
 
 Let's see how this would work in code. Let's say you wanted to draw a couple rectangles in different colors. For this small example, we could get away with reassigning the fillStyle each time instead of using save and restore.
 
+
+```
 var c = document.querySelector("#c");
 var ctx = c.getContext("2d");
 
@@ -213,6 +243,7 @@ ctx.restore();
 
 ctx.fillRect(200,10,20,20);
 The canvas state can store:
+```
 
 The current transformation matrix (rotation, scaling, translation)
 strokeStyle
@@ -232,11 +263,17 @@ textAlign
 textBaseline
 The current clipping region
 
-********************************************************************************
+---
 
 to select fill and stroke colors do :
 ctx.fillstype = "blue";
 ctx.strokeStyle = "greem";
 
 we need to define this before we draw otherwise the color wont be selected.
-********************************************************************************
+
+---
+
+to get colors to fill in canvas use hexadecimal or 140 colornames:
+https://en.wikipedia.org/wiki/Web_colors
+
+---
